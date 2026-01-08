@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
 
-function Product({ product, showButton }) {
+export interface ProductType {
+  id: number;
+  title: string;
+  description: string;
+  price: number | string;
+  image: string;
+}
+
+interface ProductProps {
+  product: ProductType;
+  showButton?: boolean;
+}
+
+function Product({ product, showButton }: ProductProps) {
   return (
     <div className="card">
       <img src={product.image} className="card-img-top" alt={product.title} />

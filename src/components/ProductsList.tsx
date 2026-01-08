@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Product from "./Product";
+import Product, { ProductType } from "./Product";
 
 function ProductsList() {
   const api_url = "https://fakestoreapi.com/products";
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
 
   const getProducts = () => {
     fetch(api_url)
@@ -18,7 +18,7 @@ function ProductsList() {
       .then((data) => setCategories(data));
   };
 
-  const getProductInCategory = (catName) => {
+  const getProductInCategory = (catName: string) => {
     console.log(catName);
     fetch(`${api_url}/category/${catName}`)
       .then((res) => res.json())
